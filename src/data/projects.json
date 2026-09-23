@@ -1,0 +1,49 @@
+[
+  {
+    "id": "rpg-java",
+    "nombre": "🎮 RPG Java DragonQuest",
+    "descripcionKey": "proyecto1_texto",
+    "descripcionFallback": "Juego de rol al estilo DragonQuest con monstruos, cofres y sistema de armas. Aplica interfaces, herencia y POO.",
+    "estadoKey": "proyecto_estado_completado",
+    "estadoFallback": "Completado",
+    "estadoTipo": "completado",
+    "categoria": "Java",
+    "githubUrl": "enlace a github",
+    "tecnologias": [
+      { "nombre": "Java", "badge": "https://img.shields.io/badge/java-%23ED8B00.svg?style=for-the-badge&logo=openjdk&logoColor=white" },
+      { "nombre": "Git", "badge": "https://img.shields.io/badge/git-%23F05033.svg?style=for-the-badge&logo=git&logoColor=white" }
+    ]
+  },
+  {
+    "id": "buscador-fc26",
+    "nombre": "⚽ Buscador EA FC 26",
+    "descripcionKey": "proyecto2_texto",
+    "descripcionFallback": "Buscador de jugadores con filtrado dinámico por liga y club, paginación, vista detallada y favoritos con localStorage.",
+    "estadoKey": "proyecto_estado_completado",
+    "estadoFallback": "Completado",
+    "estadoTipo": "completado",
+    "categoria": "Frontend",
+    "githubUrl": "enlace a github",
+    "tecnologias": [
+      { "nombre": "JavaScript", "badge": "https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E" },
+      { "nombre": "HTML", "badge": "https://img.shields.io/badge/html5-%23E34F26.svg?style=for-the-badge&logo=html5&logoColor=white" },
+      { "nombre": "CSS", "badge": "https://img.shields.io/badge/css3-%231572B6.svg?style=for-the-badge&logo=css3&logoColor=white" }
+    ]
+  },
+  {
+    "id": "portfolio-astro",
+    "nombre": "⚡ Portfolio Web Personal",
+    "descripcionKey": "proyecto_portfolio_desc",
+    "descripcionFallback": "Portfolio moderno desarrollado con Astro, TypeScript, soporte multidioma reactivo (ES, EN, CA) y tema Obsidian.",
+    "estadoKey": "proyecto_estado_completado",
+    "estadoFallback": "Completado",
+    "estadoTipo": "completado",
+    "categoria": "Frontend",
+    "githubUrl": "enlace a github",
+    "tecnologias": [
+      { "nombre": "Astro", "badge": "https://img.shields.io/badge/astro-%232C2052.svg?style=for-the-badge&logo=astro&logoColor=white" },
+      { "nombre": "JavaScript", "badge": "https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E" },
+      { "nombre": "CSS", "badge": "https://img.shields.io/badge/css3-%231572B6.svg?style=for-the-badge&logo=css3&logoColor=white" }
+    ]
+  }
+]

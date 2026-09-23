@@ -1,25 +1,72 @@
-<footer class="footer">
-  <p>Diseñado y desarrollado por Jordi Estirado · 2026</p>
-  <div class="redes-footer">
-    <a href="https://github.com/JordiESMA" target="_blank">GitHub</a>
-    <a href="https://www.linkedin.com/in/jordiestiradomartinez/" target="_blank">LinkedIn</a>
+---
+import translations from '../data/language.json';
+const t = translations["es"];
+---
+
+<footer class="footer-wrapper">
+  <div class="footer-content">
+    <p class="copyright" data-i18n="footer_texto">
+      {t.footer_texto}
+    </p>
+
+    <div class="footer-links">
+      <a href="https://github.com/JordiESMA" target="_blank" rel="noopener noreferrer" class="footer-link">
+        GitHub
+      </a>
+      <span class="separator">·</span>
+      <a href="https://www.linkedin.com/in/jordiestiradomartinez/" target="_blank" rel="noopener noreferrer" class="footer-link">
+        LinkedIn
+      </a>
+    </div>
   </div>
 </footer>
 
 <style>
-  .footer {
-    max-width: 800px;
+  .footer-wrapper {
+    width: 100%;
+    border-top: 1px solid var(--border-subtle);
+    background: var(--bg-main);
+  }
+
+  .footer-content {
+    max-width: 1080px;
     margin: 0 auto;
-    padding: 40px 20px;
-    border-top: 1px solid #30363d;
+    padding: 32px 24px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    font-family: "Courier New", Courier, monospace;
-    color: #8b949e;
-    font-size: 0.85rem;
+    font-size: 0.86rem;
+    color: var(--text-muted);
   }
-  .redes-footer { display: flex; gap: 15px; }
-  .redes-footer a { color: #33ff66; text-decoration: none; }
-  .redes-footer a:hover { text-decoration: underline; }
+
+  .copyright {
+    margin: 0;
+  }
+
+  .footer-links {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .footer-link {
+    color: var(--text-muted);
+    transition: var(--transition);
+  }
+
+  .footer-link:hover {
+    color: var(--primary-light);
+  }
+
+  .separator {
+    color: var(--border-subtle);
+  }
+
+  @media (max-width: 640px) {
+    .footer-content {
+      flex-direction: column;
+      gap: 12px;
+      text-align: center;
+    }
+  }
 </style>

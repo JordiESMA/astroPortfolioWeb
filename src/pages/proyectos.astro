@@ -1,0 +1,486 @@
+---
+import Layout from '../layouts/Layout.astro';
+import translations from '../data/language.json';
+import projects from '../data/projects.json';
+
+const t = translations["es"];
+
+// Extraer tecnologías únicas para la botonera de filtrado
+const todasTecnologias = Array.from(
+  new Set(projects.flatMap((p) => p.tecnologias.map((tech) => tech.nombre)))
+);
+---
+
+<Layout title="Proyectos | Jordi Estirado">
+  <div class="page-container">
+    <!-- CABECERA DE PROYECTOS -->
+    <header class="page-header">
+      <div class="header-main-info">
+        <div class="kicker-badge">Portafolio & Código</div>
+        <h1 data-i18n="proyectos_titulo">{t.proyectos_titulo}</h1>
+        <p class="page-subtitle" data-i18n="proyectos_subtitulo">
+          {t.proyectos_subtitulo}
+        </p>
+      </div>
+
+      <div class="projects-meta-card">
+        <span class="meta-number">{projects.length}</span>
+        <span class="meta-label">Proyectos listados</span>
+      </div>
+    </header>
+
+    <!-- BARRA DE FILTRADO INTERACTIVO -->
+    <div class="filter-bar-wrapper">
+      <div class="filter-heading">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"></polygon>
+        </svg>
+        <span>Filtrar por tecnología:</span>
+      </div>
+      <div class="filter-pills" id="filter-container">
+        <button class="filter-btn active" data-filter="all">Todos ({projects.length})</button>
+        {todasTecnologias.map((tech) => (
+          <button class="filter-btn" data-filter={tech.toLowerCase()}>{tech}</button>
+        ))}
+      </div>
+    </div>
+
+    <!-- GRID ENORME DE PROYECTOS -->
+    <section class="projects-grid" id="projects-grid">
+      {projects.map((proyecto) => {
+        const techListString = proyecto.tecnologias.map(tech => tech.nombre.toLowerCase()).join(',');
+        return (
+          <article 
+            class="project-card" 
+            data-project-id={proyecto.id}
+            data-techs={techListString}
+          >
+            <div class="card-ambient-glow"></div>
+
+            <!-- Top bar de tarjeta con estética developer moderna -->
+            <div class="card-top-bar">
+              <div class="window-decorations">
+                <span class="dot-deco dot-1"></span>
+                <span class="dot-deco dot-2"></span>
+                <span class="dot-deco dot-3"></span>
+              </div>
+              <span 
+                class={`status-pill status-${proyecto.estadoTipo}`}
+                data-i18n={proyecto.estadoKey}
+              >
+                <span class="status-indicator-dot"></span>
+                {t[proyecto.estadoKey as keyof typeof t] || proyecto.estadoFallback}
+              </span>
+            </div>
+
+            <!-- Contenido principal -->
+            <div class="card-body">
+              <h2 class="project-title">{proyecto.nombre}</h2>
+              <p class="project-desc" data-i18n={proyecto.descripcionKey}>
+                {t[proyecto.descripcionKey as keyof typeof t] || proyecto.descripcionFallback}
+              </p>
+            </div>
+
+            <!-- Badges de tecnologías con shields.io -->
+            <div class="card-tech-section">
+              <span class="tech-label">Stack tecnológico:</span>
+              <div class="badges-row">
+                {proyecto.tecnologias.map((tech) => (
+                  <div class="tech-badge-wrap" data-tech={tech.nombre}>
+                    <img 
+                      src={tech.badge} 
+                      alt={tech.nombre} 
+                      title={tech.nombre} 
+                      class="shield-img" 
+                    />
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            <!-- Botón a GitHub -->
+            <div class="card-footer-action">
+              <a 
+                href={proyecto.githubUrl}
+                data-github-src={proyecto.githubUrl}
+                target="_blank" 
+                rel="noopener noreferrer" 
+                class="github-action-btn"
+              >
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                  <path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"></path>
+                </svg>
+                <span data-i18n="proyecto_btn_github">{t.proyecto_btn_github}</span>
+                <span class="btn-arrow">↗</span>
+              </a>
+            </div>
+          </article>
+        );
+      })}
+    </section>
+  </div>
+</Layout>
+
+<!-- Script interactivo de filtrado -->
+<script>
+  function setupFilters() {
+    const buttons = document.querySelectorAll('.filter-btn');
+    const cards = document.querySelectorAll('.project-card');
+
+    buttons.forEach((btn) => {
+      btn.addEventListener('click', () => {
+        buttons.forEach((b) => b.classList.remove('active'));
+        btn.classList.add('active');
+
+        const filter = btn.getAttribute('data-filter') || 'all';
+
+        cards.forEach((card) => {
+          const techs = (card.getAttribute('data-techs') || '').split(',');
+          if (filter === 'all' || techs.includes(filter)) {
+            (card as HTMLElement).style.display = 'flex';
+          } else {
+            (card as HTMLElement).style.display = 'none';
+          }
+        });
+      });
+    });
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', setupFilters);
+  } else {
+    setupFilters();
+  }
+</script>
+
+<style>
+  .page-container {
+    display: flex;
+    flex-direction: column;
+    gap: 36px;
+  }
+
+  /* Header */
+  .page-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    padding-bottom: 24px;
+    border-bottom: 1px solid var(--border-subtle);
+    gap: 24px;
+  }
+
+  .kicker-badge {
+    display: inline-block;
+    font-size: 0.76rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: var(--primary-light);
+    margin-bottom: 8px;
+  }
+
+  .page-header h1 {
+    font-size: clamp(2.2rem, 4vw, 3rem);
+    letter-spacing: -1px;
+    margin-bottom: 10px;
+    background: linear-gradient(135deg, #ffffff 40%, #c084fc 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .page-subtitle {
+    color: var(--text-muted);
+    font-size: 1.05rem;
+    margin: 0;
+    max-width: 600px;
+  }
+
+  .projects-meta-card {
+    background: rgba(18, 20, 26, 0.7);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-md);
+    padding: 14px 22px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-shadow: var(--shadow-card);
+  }
+
+  .meta-number {
+    font-size: 1.8rem;
+    font-weight: 800;
+    color: var(--primary-light);
+    line-height: 1;
+  }
+
+  .meta-label {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-top: 4px;
+  }
+
+  /* Filter Bar */
+  .filter-bar-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    background: rgba(18, 20, 26, 0.5);
+    backdrop-filter: blur(12px);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-lg);
+    padding: 16px 20px;
+  }
+
+  .filter-heading {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.82rem;
+    font-weight: 600;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
+  .filter-pills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .filter-btn {
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid var(--border-subtle);
+    color: var(--text-muted);
+    padding: 6px 14px;
+    border-radius: var(--radius-full);
+    font-size: 0.84rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: var(--transition);
+  }
+
+  .filter-btn:hover {
+    background: rgba(255, 255, 255, 0.08);
+    color: var(--text-main);
+    border-color: rgba(255, 255, 255, 0.2);
+  }
+
+  .filter-btn.active {
+    background: var(--primary);
+    color: #ffffff;
+    border-color: var(--primary);
+    box-shadow: 0 0 16px var(--primary-glow);
+  }
+
+  /* Projects Grid */
+  .projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(330px, 1fr));
+    gap: 24px;
+  }
+
+  .project-card {
+    position: relative;
+    background: rgba(18, 20, 26, 0.75);
+    backdrop-filter: blur(16px);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-lg);
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: var(--transition);
+    overflow: hidden;
+    box-shadow: var(--shadow-card);
+  }
+
+  .card-ambient-glow {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 200px;
+    height: 200px;
+    background: radial-gradient(circle, rgba(139, 92, 246, 0.08) 0%, transparent 70%);
+    pointer-events: none;
+    border-radius: 50%;
+  }
+
+  .project-card:hover {
+    transform: translateY(-6px);
+    border-color: var(--border-hover);
+    box-shadow: var(--shadow-card-hover);
+  }
+
+  /* Card Top Bar */
+  .card-top-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 18px;
+    padding-bottom: 14px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  }
+
+  .window-decorations {
+    display: flex;
+    gap: 6px;
+  }
+
+  .dot-deco {
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+  }
+  .dot-1 { background: rgba(239, 68, 68, 0.6); }
+  .dot-2 { background: rgba(234, 179, 8, 0.6); }
+  .dot-3 { background: rgba(34, 197, 94, 0.6); }
+
+  .status-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.72rem;
+    font-weight: 700;
+    padding: 4px 10px;
+    border-radius: var(--radius-full);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
+  .status-indicator-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+  }
+
+  .status-completado {
+    background: rgba(16, 185, 129, 0.12);
+    color: #34d399;
+    border: 1px solid rgba(16, 185, 129, 0.3);
+  }
+  .status-completado .status-indicator-dot {
+    background: #10b981;
+    box-shadow: 0 0 6px #10b981;
+  }
+
+  .status-construccion {
+    background: rgba(245, 158, 11, 0.12);
+    color: #fbbf24;
+    border: 1px solid rgba(245, 158, 11, 0.3);
+  }
+  .status-construccion .status-indicator-dot {
+    background: #f59e0b;
+    box-shadow: 0 0 6px #f59e0b;
+  }
+
+  /* Card Body */
+  .card-body {
+    flex-grow: 1;
+  }
+
+  .project-title {
+    font-size: 1.28rem;
+    font-weight: 700;
+    margin-bottom: 10px;
+    color: var(--text-main);
+    letter-spacing: -0.3px;
+    transition: var(--transition);
+  }
+
+  .project-card:hover .project-title {
+    color: var(--primary-light);
+  }
+
+  .project-desc {
+    color: var(--text-muted);
+    font-size: 0.94rem;
+    line-height: 1.65;
+    margin: 0 0 20px 0;
+  }
+
+  /* Tech Stack */
+  .card-tech-section {
+    margin-bottom: 22px;
+    padding-top: 14px;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+  }
+
+  .tech-label {
+    display: block;
+    font-size: 0.74rem;
+    text-transform: uppercase;
+    letter-spacing: 0.6px;
+    color: var(--text-faint);
+    font-weight: 700;
+    margin-bottom: 10px;
+  }
+
+  .badges-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .tech-badge-wrap {
+    transition: transform 0.2s ease;
+  }
+
+  .tech-badge-wrap:hover {
+    transform: translateY(-2px);
+  }
+
+  .shield-img {
+    height: 25px;
+    border-radius: 4px;
+    display: block;
+  }
+
+  /* Card Footer / Button */
+  .card-footer-action {
+    display: flex;
+  }
+
+  .github-action-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    width: 100%;
+    padding: 10px 18px;
+    border-radius: var(--radius-md);
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid var(--border-subtle);
+    color: var(--text-main);
+    font-size: 0.9rem;
+    font-weight: 600;
+    transition: var(--transition);
+  }
+
+  .btn-arrow {
+    font-size: 1.1rem;
+    transition: transform 0.2s ease;
+  }
+
+  .github-action-btn:hover {
+    background: linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%);
+    border-color: var(--primary);
+    color: #ffffff;
+    box-shadow: 0 4px 20px var(--primary-glow);
+  }
+
+  .github-action-btn:hover .btn-arrow {
+    transform: translate(2px, -2px);
+  }
+
+  @media (max-width: 640px) {
+    .page-header {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+  }
+</style>

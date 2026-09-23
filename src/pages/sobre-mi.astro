@@ -1,0 +1,662 @@
+---
+import Layout from "../layouts/Layout.astro";
+import translations from "../data/language.json";
+import stackRaw from "../data/labelsLanguage.json";
+import photoCV from "../assets/photo_cv.jpeg";
+
+interface Tech {
+  nombre: string;
+  badge: string;
+}
+
+interface Bloque {
+  categoria: string;
+  tecnologias: Tech[];
+}
+
+const stack = stackRaw as Bloque[];
+const t = translations["es"];
+---
+
+<Layout title="Sobre mí | Jordi Estirado">
+  <div class="page-container">
+    <!-- CABECERA -->
+    <header class="page-header">
+      <div class="kicker-badge">Perfil profesional</div>
+      <h1 data-i18n="sobreMi_titulo">{t.sobreMi_titulo}</h1>
+      <p class="page-subtitle" data-i18n="sobreMi_subtitulo">
+        {t.sobreMi_subtitulo}
+      </p>
+    </header>
+
+    <!-- BIO CARD PRINCIPAL CON FOTO Y CHIPS -->
+    <section class="profile-hero-card">
+      <div class="avatar-column">
+        <div class="photo-ring-container">
+          <img
+            src={photoCV.src}
+            alt="Foto de Jordi Estirado"
+            class="profile-photo"
+          />
+          <div class="photo-ambient-pulse"></div>
+        </div>
+        <div class="quick-status-chip">
+          <span class="dot-live"></span>
+          <span>Desarrollador Junior</span>
+        </div>
+      </div>
+
+      <div class="bio-column">
+        <div class="bio-heading-row">
+          <h2>Jordi Estirado</h2>
+          <span class="location-badge">📍 Barcelona, España</span>
+        </div>
+
+        <p class="bio-highlight" data-i18n="sobreMi_texto">
+          {t.sobreMi_texto}
+        </p>
+
+        <div class="quick-facts-grid">
+          <div class="fact-card">
+            <span class="fact-title">Formación</span>
+            <span class="fact-desc"
+              >DAM (Desarrollo Aplicaciones Multiplataforma)</span
+            >
+          </div>
+          <div class="fact-card">
+            <span class="fact-title">Experiencia Actual</span>
+            <span class="fact-desc">Prácticas desarrollando ERP con Velneo</span
+            >
+          </div>
+          <div class="fact-card">
+            <span class="fact-title">Enfoque</span>
+            <span class="fact-desc"
+              >Backend, Lógica sólida & Arquitectura limpia</span
+            >
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- LÍNEA DE TIEMPO / TRAYECTORIA -->
+    <section class="section-container">
+      <div class="section-header-row">
+        <div class="section-icon-wrap">
+          <svg
+            width="20"
+            height="20"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <circle cx="12" cy="12" r="10"></circle>
+            <polyline points="12 6 12 12 16 14"></polyline>
+          </svg>
+        </div>
+        <h2 data-i18n="sobrePro_titulo">{t.sobrePro_titulo}</h2>
+      </div>
+
+      <div class="timeline-container">
+        <!-- Hito 1 -->
+        <div class="timeline-item">
+          <div class="timeline-marker">
+            <div class="marker-dot"></div>
+          </div>
+          <div class="timeline-content">
+            <span class="timeline-date">Inicio</span>
+            <h3>Curiosidad & Pasión por la lógica</h3>
+            <p data-i18n="sobrePro_texto">{t.sobrePro_texto}</p>
+          </div>
+        </div>
+
+        <!-- Hito 2 -->
+        <div class="timeline-item">
+          <div class="timeline-marker">
+            <div class="marker-dot active-dot"></div>
+          </div>
+          <div class="timeline-content">
+            <span class="timeline-date">En curso</span>
+            <h3>Grado Superior DAM</h3>
+            <p>
+              Especialización en programación orientada a objetos (Java),
+              arquitectura de sistemas, diseño de bases de datos relacionales y
+              desarrollo multiplataforma.
+            </p>
+          </div>
+        </div>
+
+        <!-- Hito 3 -->
+        <div class="timeline-item">
+          <div class="timeline-marker">
+            <div class="marker-dot current-dot"></div>
+          </div>
+          <div class="timeline-content">
+            <span class="timeline-date">Actualidad · Prácticas</span>
+            <h3>Desarrollo de ERP Empresarial con Velneo</h3>
+            <p>
+              Aplicación de conocimientos en entorno de producción real,
+              optimizando procesos de gestión, bases de datos y flujos de
+              trabajo corporativos.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TECNOLOGÍAS Y HERRAMIENTAS CATEGORIZADAS -->
+    <section class="section-container">
+      <div class="section-header-row">
+        <div class="section-icon-wrap">
+          <svg
+            width="20"
+            height="20"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
+            <line x1="8" y1="21" x2="16" y2="21"></line>
+            <line x1="12" y1="17" x2="12" y2="21"></line>
+          </svg>
+        </div>
+        <h2 data-i18n="lenguajes_titulo">{t.lenguajes_titulo}</h2>
+      </div>
+
+      <div class="tech-blocks-grid">
+        {
+          stack.map((bloque) => (
+            <div class="tech-category-card">
+              <div class="category-header">
+                <h3>{bloque.categoria}</h3>
+                <span class="count-pill">{bloque.tecnologias.length}</span>
+              </div>
+              <div class="badges-cluster">
+                {bloque.tecnologias.map((tech) => (
+                  <div class="badge-item" title={tech.nombre}>
+                    <img
+                      src={tech.badge}
+                      alt={tech.nombre}
+                      class="shield-badge"
+                    />
+                  </div>
+                ))}
+              </div>
+            </div>
+          ))
+        }
+      </div>
+    </section>
+
+    <!-- HABILIDADES & APTITUDES -->
+    <section class="section-container">
+      <div class="section-header-row">
+        <div class="section-icon-wrap">
+          <svg
+            width="20"
+            height="20"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <path
+              d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"
+            ></path>
+          </svg>
+        </div>
+        <h2 data-i18n="habilidadesAptitudes_titulo">
+          {t.habilidadesAptitudes_titulo}
+        </h2>
+      </div>
+
+      <div class="skills-highlight-card">
+        <p class="skills-text" data-i18n="habilidadesAptitudes_texto">
+          {t.habilidadesAptitudes_texto}
+        </p>
+
+        <div class="skills-chips-row">
+          <span class="skill-tag">✓ Organización y planificación</span>
+          <span class="skill-tag">✓ Comunicación clara en equipo</span>
+          <span class="skill-tag">✓ Curiosidad y aprendizaje continuo</span>
+          <span class="skill-tag">✓ Resolución analítica de problemas</span>
+          <span class="skill-tag">✓ Adaptabilidad a nuevos entornos</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- CURSOS -->
+
+    <section class="section-contain">
+
+      <div class="section-header-row">
+
+
+      </div>
+    </section>
+  </div>
+</Layout>
+
+<style>
+  .page-container {
+    display: flex;
+    flex-direction: column;
+    gap: 48px;
+  }
+
+  .kicker-badge {
+    font-size: 0.76rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: var(--primary-light);
+    margin-bottom: 8px;
+  }
+
+  .page-header {
+    border-bottom: 1px solid var(--border-subtle);
+    padding-bottom: 24px;
+  }
+
+  .page-header h1 {
+    font-size: clamp(2.2rem, 4vw, 3rem);
+    letter-spacing: -1px;
+    margin-bottom: 8px;
+    background: linear-gradient(135deg, #ffffff 40%, #c084fc 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .page-subtitle {
+    color: var(--text-muted);
+    font-size: 1.05rem;
+    margin: 0;
+  }
+
+  /* Profile Hero Card */
+  .profile-hero-card {
+    background: rgba(18, 20, 26, 0.75);
+    backdrop-filter: blur(16px);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-lg);
+    padding: 36px;
+    display: flex;
+    gap: 36px;
+    box-shadow: var(--shadow-card);
+  }
+
+  .avatar-column {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+    flex-shrink: 0;
+  }
+
+  .photo-ring-container {
+    position: relative;
+    width: 150px;
+    height: 150px;
+  }
+
+  .profile-photo {
+    width: 100%;
+    height: 100%;
+    border-radius: 24px;
+    object-fit: cover;
+    border: 3px solid rgba(168, 85, 247, 0.6);
+    position: relative;
+    z-index: 1;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+  }
+
+  .photo-ambient-pulse {
+    position: absolute;
+    inset: -8px;
+    border-radius: 32px;
+    background: radial-gradient(
+      circle,
+      rgba(168, 85, 247, 0.4) 0%,
+      transparent 70%
+    );
+    z-index: 0;
+    filter: blur(10px);
+  }
+
+  .quick-status-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(168, 85, 247, 0.12);
+    border: 1px solid rgba(168, 85, 247, 0.3);
+    padding: 6px 14px;
+    border-radius: var(--radius-full);
+    font-size: 0.78rem;
+    font-weight: 700;
+    color: var(--primary-light);
+    white-space: nowrap;
+  }
+
+  .dot-live {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: #10b981;
+    box-shadow: 0 0 8px #10b981;
+  }
+
+  .bio-column {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+  }
+
+  .bio-heading-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  .bio-heading-row h2 {
+    font-size: 1.8rem;
+    letter-spacing: -0.5px;
+  }
+
+  .location-badge {
+    font-size: 0.82rem;
+    color: var(--text-muted);
+    background: rgba(255, 255, 255, 0.05);
+    padding: 4px 12px;
+    border-radius: var(--radius-full);
+    border: 1px solid var(--border-subtle);
+  }
+
+  .bio-highlight {
+    color: var(--text-main);
+    font-size: 1.05rem;
+    line-height: 1.75;
+    margin: 0;
+  }
+
+  .quick-facts-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 14px;
+    margin-top: 8px;
+  }
+
+  .fact-card {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-md);
+    padding: 14px 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .fact-title {
+    font-size: 0.72rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: var(--primary-light);
+  }
+
+  .fact-desc {
+    font-size: 0.88rem;
+    color: var(--text-muted);
+    line-height: 1.4;
+  }
+
+  /* Section Containers */
+  .section-container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .section-header-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .section-icon-wrap {
+    width: 36px;
+    height: 36px;
+    border-radius: 10px;
+    background: rgba(168, 85, 247, 0.15);
+    color: var(--primary-light);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .section-header-row h2 {
+    font-size: 1.45rem;
+    letter-spacing: -0.5px;
+  }
+
+  /* Timeline */
+  .timeline-container {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    padding-left: 20px;
+  }
+
+  .timeline-container::before {
+    content: "";
+    position: absolute;
+    top: 10px;
+    bottom: 10px;
+    left: 28px;
+    width: 2px;
+    background: linear-gradient(
+      180deg,
+      var(--primary) 0%,
+      rgba(139, 92, 246, 0.1) 100%
+    );
+  }
+
+  .timeline-item {
+    display: flex;
+    gap: 24px;
+    margin-bottom: 24px;
+    position: relative;
+  }
+
+  .timeline-marker {
+    display: flex;
+    align-items: flex-start;
+    padding-top: 6px;
+    z-index: 1;
+  }
+
+  .marker-dot {
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background: #1e1b4b;
+    border: 3px solid var(--primary);
+  }
+
+  .active-dot {
+    background: var(--primary);
+    box-shadow: 0 0 12px var(--primary);
+  }
+
+  .current-dot {
+    background: #10b981;
+    border-color: #34d399;
+    box-shadow: 0 0 12px #10b981;
+  }
+
+  .timeline-content {
+    background: rgba(18, 20, 26, 0.7);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-md);
+    padding: 20px 24px;
+    flex-grow: 1;
+    transition: var(--transition);
+  }
+
+  .timeline-content:hover {
+    border-color: var(--border-hover);
+    transform: translateX(4px);
+  }
+
+  .timeline-date {
+    font-size: 0.74rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    color: var(--primary-light);
+    display: inline-block;
+    margin-bottom: 6px;
+  }
+
+  .timeline-content h3 {
+    font-size: 1.15rem;
+    margin-bottom: 8px;
+  }
+
+  .timeline-content p {
+    color: var(--text-muted);
+    font-size: 0.94rem;
+    line-height: 1.65;
+    margin: 0;
+  }
+
+  /* Tech Blocks Grid */
+  .tech-blocks-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+  }
+
+  .tech-category-card {
+    background: rgba(18, 20, 26, 0.7);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-md);
+    padding: 22px;
+    transition: var(--transition);
+  }
+
+  .tech-category-card:hover {
+    border-color: rgba(168, 85, 247, 0.4);
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-card-hover);
+  }
+
+  .category-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 16px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  }
+
+  .category-header h3 {
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--text-main);
+  }
+
+  .count-pill {
+    font-size: 0.72rem;
+    font-weight: 700;
+    background: rgba(168, 85, 247, 0.15);
+    color: var(--primary-light);
+    padding: 2px 8px;
+    border-radius: var(--radius-full);
+  }
+
+  .badges-cluster {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  .badge-item {
+    transition: transform 0.2s ease;
+  }
+
+  .badge-item:hover {
+    transform: scale(1.06);
+  }
+
+  .shield-badge {
+    height: 27px;
+    border-radius: 4px;
+    display: block;
+  }
+
+  /* Skills highlight card */
+  .skills-highlight-card {
+    background: rgba(18, 20, 26, 0.7);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-md);
+    padding: 28px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .skills-text {
+    color: var(--text-muted);
+    font-size: 1.02rem;
+    line-height: 1.7;
+    margin: 0;
+  }
+
+  .skills-chips-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  .skill-tag {
+    background: rgba(16, 185, 129, 0.08);
+    border: 1px solid rgba(16, 185, 129, 0.25);
+    color: #a7f3d0;
+    font-size: 0.84rem;
+    font-weight: 600;
+    padding: 6px 14px;
+    border-radius: var(--radius-full);
+  }
+
+  @media (max-width: 768px) {
+    .profile-hero-card {
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+    .bio-heading-row {
+      justify-content: center;
+    }
+    .quick-facts-grid {
+      text-align: left;
+    }
+    .timeline-container {
+      padding-left: 0;
+    }
+    .timeline-container::before {
+      display: none;
+    }
+    .timeline-marker {
+      display: none;
+    }
+  }
+</style>
