@@ -1,0 +1,46 @@
+---
+const { title = 'Jordi Estirado | Portfolio' } = Astro.props;
+---
+
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <title>{title}</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/style.css" />
+  </head>
+  <body>
+    <header class="cabecera">
+      <a href="/" class="logo"><span class="avatar">JE</span> Jordi Estirado</a>
+
+      <nav class="menu">
+        <a href="/" data-idioma="nav_inicio"></a>
+        <a href="/sobre-mi" data-idioma="nav_sobre_mi"></a>
+        <a href="/proyectos" data-idioma="nav_proyectos"></a>
+        <a href="/contacto" data-idioma="nav_contacto"></a>
+      </nav>
+
+      <select id="idioma">
+        <option value="es">ES</option>
+        <option value="en">EN</option>
+        <option value="ca">CA</option>
+      </select>
+    </header>
+
+    <main>
+      <slot />
+    </main>
+
+    <footer class="pie">
+      <p data-idioma="footer_texto"></p>
+    </footer>
+
+    <script is:inline src="/script.js"></script>
+  </body>
+</html>

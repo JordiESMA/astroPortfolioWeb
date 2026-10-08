@@ -1,0 +1,78 @@
+[
+  {
+    "nombre": "🎮 RPG Java DragonQuest",
+    "descripcionKey": "proyecto1_texto",
+    "estadoKey": "proyecto_estado_completado",
+    "estadoTipo": "completado",
+    "githubUrl": "https://github.com/JordiESMA/JAVA_DRAGONQUEST",
+    "tecnologias": [
+      {
+        "nombre": "Java",
+        "badge": "https://img.shields.io/badge/java-%23ED8B00.svg?style=for-the-badge&logo=openjdk&logoColor=white"
+      },
+      {
+        "nombre": "Git",
+        "badge": "https://img.shields.io/badge/git-%23F05033.svg?style=for-the-badge&logo=git&logoColor=white"
+      }
+    ]
+  },
+  {
+    "nombre": "⚽ Buscador EA FC 26",
+    "descripcionKey": "proyecto2_texto",
+    "estadoKey": "proyecto_estado_completado",
+    "estadoTipo": "completado",
+    "githubUrl": "https://github.com/JordiESMA/fifaPlayers",
+    "tecnologias": [
+      {
+        "nombre": "JavaScript",
+        "badge": "https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E"
+      },
+      {
+        "nombre": "HTML",
+        "badge": "https://img.shields.io/badge/html5-%23E34F26.svg?style=for-the-badge&logo=html5&logoColor=white"
+      },
+      {
+        "nombre": "CSS",
+        "badge": "https://img.shields.io/badge/css3-%231572B6.svg?style=for-the-badge&logo=css3&logoColor=white"
+      }
+    ]
+  },
+  {
+    "nombre": "⚡ Portfolio Web Personal",
+    "descripcionKey": "proyecto_portfolio_desc",
+    "estadoKey": "proyecto_estado_completado",
+    "estadoTipo": "completado",
+    "githubUrl": "https://github.com/JordiESMA/astroPortfolioWeb",
+    "tecnologias": [
+      {
+        "nombre": "Astro",
+        "badge": "https://img.shields.io/badge/astro-%232C2052.svg?style=for-the-badge&logo=astro&logoColor=white"
+      },
+      {
+        "nombre": "JavaScript",
+        "badge": "https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E"
+      },
+      {
+        "nombre": "CSS",
+        "badge": "https://img.shields.io/badge/css3-%231572B6.svg?style=for-the-badge&logo=css3&logoColor=white"
+      }
+    ]
+  },
+  {
+    "nombre": "⚡ Api gestión de liga",
+    "descripcionKey": "proyecto_liga_api",
+    "estadoKey": "proyecto_estado_construccion",
+    "estadoTipo": "construccion",
+    "githubUrl": "https://github.com/JordiESMA/footballLeaugue",
+    "tecnologias": [
+      {
+        "nombre": "Spring",
+        "badge": "https://img.shields.io/badge/spring-%236DB33F.svg?style=for-the-badge&logo=spring&logoColor=white"
+      },
+      {
+        "nombre": "SQL",
+        "badge": "https://img.shields.io/badge/mysql-%2300f.svg?style=for-the-badge&logo=mysql&logoColor=white"
+      }
+    ]
+  }
+]

@@ -1,0 +1,23 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="Jordi Estirado | Portfolio">
+  <section class="perfil">
+    <img src="/images/photo_cv.jpeg" alt="Jordi Estirado" class="foto" />
+
+    <div>
+      <p data-idioma="hero_saludo"></p>
+      <h1>Jordi Estirado</h1>
+      <h2 data-idioma="hero_subtitulo"></h2>
+      <p data-idioma="inicio_texto"></p>
+
+      <a class="boton" href="/proyectos" data-idioma="hero_cta_proyectos"></a>
+      <a class="boton boton-claro" href="/contacto" data-idioma="hero_cta_contacto"></a>
+    </div>
+  </section>
+
+  <h2 data-idioma="inicio_proyectos_titulo"></h2>
+  <div id="inicio-proyectos" class="rejilla"></div>
+  <p><a class="enlace" href="/proyectos" data-idioma="btn_ver_mas"></a></p>
+</Layout>

@@ -1,0 +1,16 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="Proyectos | Jordi Estirado">
+  <h1 data-idioma="proyectos_titulo"></h1>
+  <p data-idioma="proyectos_subtitulo"></p>
+
+  <label for="filtro" data-idioma="proyectos_filtrar"></label>
+  <select id="filtro">
+    <option value="todos" data-idioma="proyectos_todos"></option>
+  </select>
+
+  <div id="proyectos-lista" class="rejilla"></div>
+  <p id="proyectos-vacio" hidden data-idioma="proyectos_vacio"></p>
+</Layout>
