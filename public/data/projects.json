@@ -1,0 +1,180 @@
+[
+  {
+    "nombre": "Taller mecánico",
+    "descripcionKey": "proyecto_tallerMecanico",
+    "githubUrl": "https://github.com/JordiESMA/tallerMecanico",
+    "tecnologias": [
+      {
+        "nombre": "Laravel",
+        "badge": "https://img.shields.io/badge/laravel-%23FF2D20.svg?style=for-the-badge&logo=laravel&logoColor=white"
+      },
+      {
+        "nombre": "PHP",
+        "badge": "https://img.shields.io/badge/php-%23777BB4.svg?style=for-the-badge&logo=php&logoColor=white"
+      },
+      {
+        "nombre": "Velneo",
+        "badge": "https://img.shields.io/badge/Velneo-982C48.svg?style=for-the-badge"
+      }
+    ]
+  },
+  {
+    "nombre": "ShareTicket",
+    "descripcionKey": "proyecto_ShareTicket",
+    "githubUrl": "https://github.com/JordiESMA/ShareTicket",
+    "tecnologias": [
+      {
+        "nombre": "Kotlin",
+        "badge": "https://img.shields.io/badge/Kotlin-7F52FF.svg?style=for-the-badge&logo=kotlin&logoColor=white"
+      },
+      {
+        "nombre": "Jetpack Compose",
+        "badge": "https://img.shields.io/badge/Jetpack%20Compose-4285F4.svg?style=for-the-badge&logo=jetpackcompose&logoColor=white"
+      },
+      {
+        "nombre": "Firebase",
+        "badge": "https://img.shields.io/badge/Firebase-C44403.svg?style=for-the-badge&logo=firebase&logoColor=white"
+      }
+    ]
+  },
+  {
+    "nombre": "Atlas de Aethria",
+    "descripcionKey": "proyecto_atlas-de-aethria",
+    "githubUrl": "https://github.com/JordiESMA/atlas-de-aethria",
+    "tecnologias": [
+      {
+        "nombre": "Unity",
+        "badge": "https://img.shields.io/badge/Unity-222C37.svg?style=for-the-badge&logo=unity&logoColor=white"
+      },
+      {
+        "nombre": "C#",
+        "badge": "https://img.shields.io/badge/C%23-512BD4.svg?style=for-the-badge"
+      }
+    ]
+  },
+  {
+    "nombre": "Football League",
+    "descripcionKey": "proyecto_footballLeaugue",
+    "githubUrl": "https://github.com/JordiESMA/footballLeaugue",
+    "tecnologias": [
+      {
+        "nombre": "Java",
+        "badge": "https://img.shields.io/badge/java-%23ED8B00.svg?style=for-the-badge&logo=openjdk&logoColor=white"
+      },
+      {
+        "nombre": "Spring Boot",
+        "badge": "https://img.shields.io/badge/spring-%236DB33F.svg?style=for-the-badge&logo=spring&logoColor=white"
+      },
+      {
+        "nombre": "Thymeleaf",
+        "badge": "https://img.shields.io/badge/Thymeleaf-%23005C0F.svg?style=for-the-badge&logo=Thymeleaf&logoColor=white"
+      },
+      {
+        "nombre": "H2",
+        "badge": "https://img.shields.io/badge/H2-184F98.svg?style=for-the-badge"
+      }
+    ],
+    "estadoKey": "proyecto_estado_completado",
+    "estadoTipo": "completado"
+  },
+  {
+    "nombre": "FitnessApp",
+    "descripcionKey": "proyecto_FitnessApp",
+    "githubUrl": "https://github.com/JordiESMA/FitnessApp",
+    "tecnologias": [
+      {
+        "nombre": "Kotlin",
+        "badge": "https://img.shields.io/badge/Kotlin-7F52FF.svg?style=for-the-badge&logo=kotlin&logoColor=white"
+      },
+      {
+        "nombre": "Jetpack Compose",
+        "badge": "https://img.shields.io/badge/Jetpack%20Compose-4285F4.svg?style=for-the-badge&logo=jetpackcompose&logoColor=white"
+      }
+    ]
+  },
+  {
+    "nombre": "EA FC 26",
+    "descripcionKey": "proyecto2_texto",
+    "githubUrl": "https://github.com/JordiESMA/fifaPlayers",
+    "tecnologias": [
+      {
+        "nombre": "JavaScript",
+        "badge": "https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E"
+      },
+      {
+        "nombre": "HTML",
+        "badge": "https://img.shields.io/badge/html5-%23E34F26.svg?style=for-the-badge&logo=html5&logoColor=white"
+      },
+      {
+        "nombre": "CSS",
+        "badge": "https://img.shields.io/badge/css3-%231572B6.svg?style=for-the-badge&logo=css3&logoColor=white"
+      }
+    ],
+    "estadoKey": "proyecto_estado_completado",
+    "estadoTipo": "completado"
+  },
+  {
+    "nombre": "DragonQuest RPG",
+    "descripcionKey": "proyecto1_texto",
+    "githubUrl": "https://github.com/JordiESMA/JAVA_DRAGONQUEST",
+    "tecnologias": [
+      {
+        "nombre": "Java",
+        "badge": "https://img.shields.io/badge/java-%23ED8B00.svg?style=for-the-badge&logo=openjdk&logoColor=white"
+      },
+      {
+        "nombre": "Git",
+        "badge": "https://img.shields.io/badge/git-%23F05033.svg?style=for-the-badge&logo=git&logoColor=white"
+      }
+    ],
+    "estadoKey": "proyecto_estado_completado",
+    "estadoTipo": "completado"
+  },
+  {
+    "nombre": "CalculatorIMC",
+    "descripcionKey": "proyecto_CalculatorIMC",
+    "githubUrl": "https://github.com/JordiESMA/CalculatorIMC",
+    "tecnologias": [
+      {
+        "nombre": "Kotlin",
+        "badge": "https://img.shields.io/badge/Kotlin-7F52FF.svg?style=for-the-badge&logo=kotlin&logoColor=white"
+      },
+      {
+        "nombre": "Jetpack Compose",
+        "badge": "https://img.shields.io/badge/Jetpack%20Compose-4285F4.svg?style=for-the-badge&logo=jetpackcompose&logoColor=white"
+      }
+    ]
+  },
+  {
+    "nombre": "Retos Java",
+    "descripcionKey": "proyecto_retosJava",
+    "githubUrl": "https://github.com/JordiESMA/retosJava",
+    "tecnologias": [
+      {
+        "nombre": "Java",
+        "badge": "https://img.shields.io/badge/java-%23ED8B00.svg?style=for-the-badge&logo=openjdk&logoColor=white"
+      }
+    ]
+  },
+  {
+    "nombre": "Portfolio · Astro",
+    "descripcionKey": "proyecto_astroPortfolioWeb",
+    "githubUrl": "https://github.com/JordiESMA/astroPortfolioWeb",
+    "tecnologias": [
+      {
+        "nombre": "Astro",
+        "badge": "https://img.shields.io/badge/astro-%232C2052.svg?style=for-the-badge&logo=astro&logoColor=white"
+      },
+      {
+        "nombre": "JavaScript",
+        "badge": "https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E"
+      },
+      {
+        "nombre": "CSS",
+        "badge": "https://img.shields.io/badge/css3-%231572B6.svg?style=for-the-badge&logo=css3&logoColor=white"
+      }
+    ],
+    "estadoKey": "proyecto_estado_completado",
+    "estadoTipo": "completado"
+  }
+]

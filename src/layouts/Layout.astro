@@ -1,56 +1,46 @@
 ---
-import es from '../data/es.json';
-const { title } = Astro.props;
-const base = import.meta.env.BASE_URL;
-const links = [
-  ['', 'nav_inicio'], ['sobre-mi/', 'nav_sobre_mi'],
-  ['proyectos/', 'nav_proyectos'], ['contacto/', 'nav_contacto']
-] as const;
+const { title = 'Jordi Estirado | Portfolio' } = Astro.props;
 ---
+
 <!doctype html>
 <html lang="es">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="description" content={es.inicio_texto} />
-    <link rel="icon" href={base + 'favicon.svg'} />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <title>{title}</title>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href={base + 'style.css'} />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/style.css" />
   </head>
   <body>
     <header class="cabecera">
-      <a href={base} class="logo"><span class="avatar" aria-hidden="true">JE</span> Jordi Estirado</a>
+      <a href="/" class="logo"><span class="avatar">JE</span> Jordi Estirado</a>
+
       <nav class="menu">
-        {links.map(([route, key]) => <a href={base + route} aria-current={Astro.url.pathname === base + route ? 'page' : undefined} data-idioma={key}>{es[key]}</a>)}
+        <a href="/" data-idioma="nav_inicio"></a>
+        <a href="/sobre-mi" data-idioma="nav_sobre_mi"></a>
+        <a href="/proyectos" data-idioma="nav_proyectos"></a>
+        <a href="/contacto" data-idioma="nav_contacto"></a>
       </nav>
-      <select id="idioma" aria-label="Idioma">
-        <option value="es">ES</option><option value="en">EN</option><option value="ca">CA</option>
+
+      <select id="idioma">
+        <option value="es">ES</option>
+        <option value="en">EN</option>
+        <option value="ca">CA</option>
       </select>
     </header>
-    <main><slot /></main>
-    <footer class="pie"><p data-idioma="footer_texto">{es.footer_texto}</p><a href="https://github.com/JordiESMA">GitHub ↗</a></footer>
-    <script>
-      import es from '../data/es.json';
-      import en from '../data/en.json';
-      import ca from '../data/ca.json';
-      const languages: Record<string, Record<string, string>> = { es, en, ca };
-      const selector = document.querySelector<HTMLSelectElement>('#idioma')!;
-      function translate(lang: string) {
-        const strings = languages[lang] ?? es;
-        document.documentElement.lang = lang;
-        selector.value = lang;
-        selector.setAttribute('aria-label', strings.idioma_label);
-        document.querySelectorAll<HTMLElement>('[data-idioma]').forEach(el => {
-          el.textContent = strings[el.dataset.idioma!];
-        });
-      }
-      const saved = localStorage.getItem('idioma');
-      if (saved && Object.hasOwn(languages, saved)) translate(saved);
-      selector.addEventListener('change', () => {
-        translate(selector.value);
-        localStorage.setItem('idioma', selector.value);
-      });
-    </script>
+
+    <main>
+      <slot />
+    </main>
+
+    <footer class="pie">
+      <p data-idioma="footer_texto"></p>
+    </footer>
+
+    <script is:inline src="/script.js"></script>
   </body>
 </html>
