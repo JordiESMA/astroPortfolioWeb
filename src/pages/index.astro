@@ -1,23 +1,45 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import Badges from '../components/Badges.astro';
+import proyectos from '../data/projects.json';
+import es from '../data/es.json';
+
+const textos: Record<string, string> = es;
+const destacados = proyectos.filter(p => p.imagen);
 ---
-
-<Layout title="Jordi Estirado | Portfolio">
-  <section class="perfil">
-    <img src="/images/photo_cv.jpeg" alt="Jordi Estirado" class="foto" />
-
-    <div>
-      <p data-idioma="hero_saludo"></p>
-      <h1>Jordi Estirado</h1>
-      <h2 data-idioma="hero_subtitulo"></h2>
-      <p data-idioma="inicio_texto"></p>
-
-      <a class="boton" href="/proyectos" data-idioma="hero_cta_proyectos"></a>
-      <a class="boton boton-claro" href="/contacto" data-idioma="hero_cta_contacto"></a>
+<Layout>
+  <section class="portada">
+    <div class="presentacion">
+      <div class="firma"><a href="/sobre-mi" aria-label="Jordi Estirado"><img src="/images/jordi-avatar.webp" alt="" width="38" height="38" /></a><p class="disponibilidad" data-idioma="hero_saludo">{es.hero_saludo}</p></div>
+      <h1>Jordi <span>Estirado<span class="punto">.</span></span></h1>
+      <p class="cargo" data-idioma="hero_subtitulo">{es.hero_subtitulo}</p>
+      <p class="resumen" data-idioma="inicio_texto">{es.inicio_texto}</p>
+      <div class="acciones">
+        <a class="boton" href="/proyectos"><span data-idioma="hero_cta_proyectos">{es.hero_cta_proyectos}</span> <span aria-hidden="true">↗</span></a>
+        <a class="boton secundario" href="/contacto" data-idioma="hero_cta_contacto">{es.hero_cta_contacto}</a>
+      </div>
     </div>
+    <div class="arte"><img src="/images/obsidiana.webp" alt="" fetchpriority="high" width="768" height="768" /></div>
   </section>
 
-  <h2 data-idioma="inicio_proyectos_titulo"></h2>
-  <div id="inicio-proyectos" class="rejilla"></div>
-  <p><a class="enlace" href="/proyectos" data-idioma="btn_ver_mas"></a></p>
+  <section class="seleccion">
+    <header class="titulo-seccion">
+      <h2 data-idioma="inicio_proyectos_titulo">{es.inicio_proyectos_titulo}</h2>
+      <a class="enlace" href="/proyectos" data-idioma="btn_ver_mas">{es.btn_ver_mas}</a>
+    </header>
+    <div class="muestras">
+      {destacados.map(p => <article class="muestra">
+        <a href={p.githubUrl} class:list={['captura', p.imagen]} aria-label={p.nombre}>
+          <img src={'/images/proyectos/' + p.imagen + '.webp'} alt="" loading="lazy" />
+          <span aria-hidden="true">↗</span>
+        </a>
+        <div class="ficha">
+          <p class="etiqueta" data-idioma={p.grupo}>{textos[p.grupo]}</p>
+          <h3><a href={p.githubUrl}>{p.nombre}</a></h3>
+          <p data-idioma={p.descripcionKey}>{textos[p.descripcionKey]}</p>
+          <Badges tecnologias={p.tecnologias} />
+        </div>
+      </article>)}
+    </div>
+  </section>
 </Layout>

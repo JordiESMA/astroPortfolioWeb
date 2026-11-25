@@ -1,0 +1,9 @@
+---
+interface Props {
+  tecnologias: {nombre: string; badge: string}[];
+}
+const { tecnologias } = Astro.props;
+---
+<div class="badges">
+  {tecnologias.map(t => <img src={t.badge} alt={t.nombre} title={t.nombre} loading="lazy" />)}
+</div>

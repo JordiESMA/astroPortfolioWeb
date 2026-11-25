@@ -53,7 +53,8 @@
         "badge": "https://img.shields.io/badge/C%23-512BD4.svg?style=for-the-badge"
       }
     ],
-    "grupo": "grupo_juegos"
+    "grupo": "grupo_juegos",
+    "imagen": "atlas"
   },
   {
     "nombre": "Football League",
@@ -77,7 +78,8 @@
         "badge": "https://img.shields.io/badge/H2-184F98.svg?style=for-the-badge"
       }
     ],
-    "grupo": "grupo_web"
+    "grupo": "grupo_web",
+    "imagen": "liga"
   },
   {
     "nombre": "FitnessApp",
@@ -145,7 +147,8 @@
         "badge": "https://img.shields.io/badge/Jetpack%20Compose-4285F4.svg?style=for-the-badge&logo=jetpackcompose&logoColor=white"
       }
     ],
-    "grupo": "grupo_android"
+    "grupo": "grupo_android",
+    "imagen": "imc"
   },
   {
     "nombre": "Retos Java",

@@ -1,13 +1,15 @@
 ---
+import es from '../data/es.json';
 import Layout from '../layouts/Layout.astro';
 ---
 
 <Layout title="Contacto | Jordi Estirado">
-  <h1 data-idioma="contacto_titulo"></h1>
+
   <div class="contacto">
     <section class="contacto-principal">
-      <h2 data-idioma="contacto_pregunta"></h2>
-      <p data-idioma="contacto_disponible"></p>
+      <p class="disponibilidad" data-idioma="hero_saludo">{es.hero_saludo}</p>
+      <h1 data-idioma="contacto_pregunta">{es.contacto_pregunta}</h1>
+      <p data-idioma="contacto_disponible">{es.contacto_disponible}</p>
       <a class="correo-directo" href="mailto:estiradojordi@gmail.com">
         estiradojordi@gmail.com <span aria-hidden="true">↗</span>
       </a>
@@ -22,9 +24,9 @@ import Layout from '../layouts/Layout.astro';
           </svg>
         </div>
         <div class="canal-texto">
-          <span class="etiqueta" data-idioma="contacto_tipo_red"></span>
-          <h2 data-idioma="contacto_linkedin_titulo"></h2>
-          <p data-idioma="contacto_linkedin_desc"></p>
+          <span class="etiqueta" data-idioma="contacto_tipo_red">{es.contacto_tipo_red}</span>
+          <h2 data-idioma="contacto_linkedin_titulo">{es.contacto_linkedin_titulo}</h2>
+          <p data-idioma="contacto_linkedin_desc">{es.contacto_linkedin_desc}</p>
         </div>
         <span class="flecha" aria-hidden="true">↗</span>
       </a>
@@ -36,9 +38,9 @@ import Layout from '../layouts/Layout.astro';
           </svg>
         </div>
         <div class="canal-texto">
-          <span class="etiqueta" data-idioma="contacto_tipo_codigo"></span>
+          <span class="etiqueta" data-idioma="contacto_tipo_codigo">{es.contacto_tipo_codigo}</span>
           <h2>GitHub / JordiESMA</h2>
-          <p data-idioma="contacto_github_desc"></p>
+          <p data-idioma="contacto_github_desc">{es.contacto_github_desc}</p>
         </div>
         <span class="flecha" aria-hidden="true">↗</span>
       </a>

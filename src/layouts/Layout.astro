@@ -1,46 +1,43 @@
 ---
+import '../styles/portfolio.css';
+import es from '../data/es.json';
 const { title = 'Jordi Estirado | Portfolio' } = Astro.props;
+const links = [
+  ['/', 'nav_inicio'], ['/sobre-mi', 'nav_sobre_mi'],
+  ['/proyectos', 'nav_proyectos'], ['/contacto', 'nav_contacto']
+] as const;
+const route = Astro.url.pathname.replace(/\/$/, '') || '/';
 ---
-
 <!doctype html>
 <html lang="es">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="theme-color" content="#0b0a0f" />
+    <meta name="description" content={es.inicio_texto} />
+    <link rel="icon" href="/favicon.svg" />
     <title>{title}</title>
-    <link
-      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap"
-      rel="stylesheet"
-    />
-    <link rel="stylesheet" href="/style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
   </head>
   <body>
     <header class="cabecera">
-      <a href="/" class="logo"><span class="avatar">JE</span> Jordi Estirado</a>
-
-      <nav class="menu">
-        <a href="/" data-idioma="nav_inicio"></a>
-        <a href="/sobre-mi" data-idioma="nav_sobre_mi"></a>
-        <a href="/proyectos" data-idioma="nav_proyectos"></a>
-        <a href="/contacto" data-idioma="nav_contacto"></a>
-      </nav>
-
-      <select id="idioma">
-        <option value="es">ES</option>
-        <option value="en">EN</option>
-        <option value="ca">CA</option>
-      </select>
+      <div class="barra">
+        <a href="/" class="logo" aria-label="Jordi Estirado"><span class="monograma" aria-hidden="true">je<span>.</span></span><span class="marca-nombre">Jordi Estirado</span></a>
+        <nav class="menu">
+          {links.map(([href, key]) => <a href={href} aria-current={route === href ? 'page' : undefined} data-idioma={key}>{es[key]}</a>)}
+        </nav>
+        <select id="idioma" aria-label={es.idioma_label}>
+          <option value="es">ES</option><option value="en">EN</option><option value="ca">CA</option>
+        </select>
+      </div>
     </header>
-
-    <main>
-      <slot />
-    </main>
-
+    <main><slot /></main>
     <footer class="pie">
-      <p data-idioma="footer_texto"></p>
+      <p data-idioma="footer_texto">{es.footer_texto}</p>
+      <div><a href="https://github.com/JordiESMA">GitHub ↗</a><a href="https://www.linkedin.com/in/jordiestiradomartinez/">LinkedIn ↗</a></div>
     </footer>
-
-    <script is:inline src="/script.js"></script>
+    <script src="../scripts/portfolio.ts"></script>
   </body>
 </html>
