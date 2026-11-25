@@ -37,7 +37,6 @@ function pintarInicio() {
     lista.innerHTML += `
       <div class="tarjeta">
         <h3>${p.nombre}</h3>
-        ${p.estadoKey ? `<span class="estado ${p.estadoTipo}">${textos[p.estadoKey]}</span>` : ''}
         ${crearBadges(p.tecnologias)}
       </div>`;
   });
@@ -66,25 +65,26 @@ function pintarProyectos() {
   if (!lista) return;
 
   const filtro = document.getElementById('filtro').value;
-  let total = 0;
-  lista.innerHTML = '';
-
-  proyectos.forEach((p) => {
-    const usaTecnologia = p.tecnologias.some((tec) => tec.nombre === filtro);
-    if (filtro !== 'todos' && !usaTecnologia) return;
-
-    lista.innerHTML += `
-      <div class="tarjeta">
-        <h3>${p.nombre}</h3>
-        ${p.estadoKey ? `<span class="estado ${p.estadoTipo}">${textos[p.estadoKey]}</span>` : ''}
-        <p>${textos[p.descripcionKey]}</p>
+  const visibles = proyectos.filter(p =>
+    filtro === 'todos' || p.tecnologias.some(tec => tec.nombre === filtro)
+  );
+  const grupos = ['grupo_web', 'grupo_android', 'grupo_juegos', 'grupo_ejercicios'];
+  lista.innerHTML = grupos.map(grupo => {
+    const miembros = visibles.filter(p => p.grupo === grupo);
+    if (!miembros.length) return '';
+    const filas = miembros.map(p => `
+      <article class="fila-proyecto">
+        <div>
+          <h3>${p.nombre}</h3>
+          <p>${textos[p.descripcionKey]}</p>
+        </div>
         ${crearBadges(p.tecnologias)}
-        <a class="boton-github" href="${p.githubUrl}" target="_blank">${textos.proyecto_btn_github} ↗</a>
-      </div>`;
-    total++;
-  });
-
-  document.getElementById('proyectos-vacio').hidden = total > 0;
+        <a class="codigo" href="${p.githubUrl}" target="_blank" rel="noopener noreferrer"
+           aria-label="${p.nombre} · ${textos.proyecto_btn_github}">GitHub <span aria-hidden="true">↗</span></a>
+      </article>`).join('');
+    return `<section class="grupo-proyectos"><h2>${textos[grupo]}</h2><div class="filas">${filas}</div></section>`;
+  }).join('');
+  document.getElementById('proyectos-vacio').hidden = visibles.length > 0;
 }
 
 // ===== Tecnologías en "Sobre mí" =====

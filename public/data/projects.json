@@ -16,7 +16,8 @@
         "nombre": "Velneo",
         "badge": "https://img.shields.io/badge/Velneo-982C48.svg?style=for-the-badge"
       }
-    ]
+    ],
+    "grupo": "grupo_web"
   },
   {
     "nombre": "ShareTicket",
@@ -35,7 +36,8 @@
         "nombre": "Firebase",
         "badge": "https://img.shields.io/badge/Firebase-C44403.svg?style=for-the-badge&logo=firebase&logoColor=white"
       }
-    ]
+    ],
+    "grupo": "grupo_android"
   },
   {
     "nombre": "Atlas de Aethria",
@@ -50,7 +52,8 @@
         "nombre": "C#",
         "badge": "https://img.shields.io/badge/C%23-512BD4.svg?style=for-the-badge"
       }
-    ]
+    ],
+    "grupo": "grupo_juegos"
   },
   {
     "nombre": "Football League",
@@ -74,8 +77,7 @@
         "badge": "https://img.shields.io/badge/H2-184F98.svg?style=for-the-badge"
       }
     ],
-    "estadoKey": "proyecto_estado_completado",
-    "estadoTipo": "completado"
+    "grupo": "grupo_web"
   },
   {
     "nombre": "FitnessApp",
@@ -90,7 +92,8 @@
         "nombre": "Jetpack Compose",
         "badge": "https://img.shields.io/badge/Jetpack%20Compose-4285F4.svg?style=for-the-badge&logo=jetpackcompose&logoColor=white"
       }
-    ]
+    ],
+    "grupo": "grupo_android"
   },
   {
     "nombre": "EA FC 26",
@@ -110,8 +113,7 @@
         "badge": "https://img.shields.io/badge/css3-%231572B6.svg?style=for-the-badge&logo=css3&logoColor=white"
       }
     ],
-    "estadoKey": "proyecto_estado_completado",
-    "estadoTipo": "completado"
+    "grupo": "grupo_web"
   },
   {
     "nombre": "DragonQuest RPG",
@@ -127,8 +129,7 @@
         "badge": "https://img.shields.io/badge/git-%23F05033.svg?style=for-the-badge&logo=git&logoColor=white"
       }
     ],
-    "estadoKey": "proyecto_estado_completado",
-    "estadoTipo": "completado"
+    "grupo": "grupo_juegos"
   },
   {
     "nombre": "CalculatorIMC",
@@ -143,7 +144,8 @@
         "nombre": "Jetpack Compose",
         "badge": "https://img.shields.io/badge/Jetpack%20Compose-4285F4.svg?style=for-the-badge&logo=jetpackcompose&logoColor=white"
       }
-    ]
+    ],
+    "grupo": "grupo_android"
   },
   {
     "nombre": "Retos Java",
@@ -154,7 +156,8 @@
         "nombre": "Java",
         "badge": "https://img.shields.io/badge/java-%23ED8B00.svg?style=for-the-badge&logo=openjdk&logoColor=white"
       }
-    ]
+    ],
+    "grupo": "grupo_ejercicios"
   },
   {
     "nombre": "Portfolio · Astro",
@@ -174,7 +177,6 @@
         "badge": "https://img.shields.io/badge/css3-%231572B6.svg?style=for-the-badge&logo=css3&logoColor=white"
       }
     ],
-    "estadoKey": "proyecto_estado_completado",
-    "estadoTipo": "completado"
+    "grupo": "grupo_web"
   }
 ]
