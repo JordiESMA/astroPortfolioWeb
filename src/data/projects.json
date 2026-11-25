@@ -1,0 +1,98 @@
+[
+  {
+    "nombre": "Taller mecánico",
+    "descripcionKey": "proyecto_tallerMecanico",
+    "githubUrl": "https://github.com/JordiESMA/tallerMecanico",
+    "tecnologias": [
+      "Laravel",
+      "PHP",
+      "Velneo"
+    ]
+  },
+  {
+    "nombre": "ShareTicket",
+    "descripcionKey": "proyecto_ShareTicket",
+    "githubUrl": "https://github.com/JordiESMA/ShareTicket",
+    "tecnologias": [
+      "Kotlin",
+      "Jetpack Compose",
+      "Firebase"
+    ]
+  },
+  {
+    "nombre": "Atlas de Aethria",
+    "descripcionKey": "proyecto_atlas-de-aethria",
+    "githubUrl": "https://github.com/JordiESMA/atlas-de-aethria",
+    "tecnologias": [
+      "Unity",
+      "C#"
+    ]
+  },
+  {
+    "nombre": "Football League",
+    "descripcionKey": "proyecto_footballLeaugue",
+    "githubUrl": "https://github.com/JordiESMA/footballLeaugue",
+    "tecnologias": [
+      "Java",
+      "Spring Boot",
+      "Thymeleaf",
+      "H2"
+    ],
+    "estadoKey": "proyecto_estado_completado"
+  },
+  {
+    "nombre": "FitnessApp",
+    "descripcionKey": "proyecto_FitnessApp",
+    "githubUrl": "https://github.com/JordiESMA/FitnessApp",
+    "tecnologias": [
+      "Kotlin",
+      "Jetpack Compose"
+    ]
+  },
+  {
+    "nombre": "EA FC 26",
+    "descripcionKey": "proyecto2_texto",
+    "githubUrl": "https://github.com/JordiESMA/fifaPlayers",
+    "tecnologias": [
+      "JavaScript",
+      "HTML",
+      "CSS"
+    ]
+  },
+  {
+    "nombre": "DragonQuest RPG",
+    "descripcionKey": "proyecto1_texto",
+    "githubUrl": "https://github.com/JordiESMA/JAVA_DRAGONQUEST",
+    "tecnologias": [
+      "Java",
+      "Git"
+    ]
+  },
+  {
+    "nombre": "CalculatorIMC",
+    "descripcionKey": "proyecto_CalculatorIMC",
+    "githubUrl": "https://github.com/JordiESMA/CalculatorIMC",
+    "tecnologias": [
+      "Kotlin",
+      "Jetpack Compose"
+    ]
+  },
+  {
+    "nombre": "Retos Java",
+    "descripcionKey": "proyecto_retosJava",
+    "githubUrl": "https://github.com/JordiESMA/retosJava",
+    "tecnologias": [
+      "Java"
+    ]
+  },
+  {
+    "nombre": "Portfolio · Astro",
+    "descripcionKey": "proyecto_astroPortfolioWeb",
+    "githubUrl": "https://github.com/JordiESMA/astroPortfolioWeb",
+    "tecnologias": [
+      "Astro",
+      "JavaScript",
+      "CSS"
+    ]
+  }
+]
